@@ -35,6 +35,12 @@ public class UserName {
     // test output
     String combine = (firstName + lastName + favNum + email);
     System.out.println(combine);
+    
+    System.out.println("How long do you want your password to be?");
+    int length = s.nextInt();
+    String password = generatePassword(length);
+    System.out.println(password);
+    
     s.close();
   } // end main method
 
@@ -47,4 +53,30 @@ public class UserName {
   public static String getInitial(String n) {
     return n.substring(0, 1);
   } // end initialize method
-} // end class
+
+  public static String generatePassword(int length) {  
+    String password = "";
+        
+    for (int i = 0; i<length; i++) {
+        int rand = (int)((Math.random()*26)+65);
+        char c = (char)rand;
+                
+        int rando = (int)((Math.random()*26)+97);
+        char l = (char)rando;
+                
+        int num = (int)(Math.random()*10);
+            
+        int choice = (int)(Math.random()*3+1);
+        if (choice == 1) {
+            password += c;
+        }
+        else if (choice == 2) {
+            password += l;
+        }
+        else {
+            password += num;
+        }
+        } // end for statement
+    return password;
+    } //end generatePassword
+}
